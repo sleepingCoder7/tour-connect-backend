@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:3000/tour";
+const API_URL = "/tour";
 
 const toursList = document.getElementById("tours-list");
 const fetchButton = document.querySelector(".card button");
