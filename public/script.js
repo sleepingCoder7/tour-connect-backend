@@ -6,6 +6,7 @@ const fetchButton = document.querySelector(".card button");
 const createForm = document.getElementById("create-tour-form");
 const updateForm = document.getElementById("update-tour-form");
 const deleteForm = document.getElementById("delete-tour-form");
+const fetchTourForm = document.getElementById("fetch-tour-form");
 
 /* Create Tour */
 createForm.addEventListener("submit", async (e) => {
@@ -87,3 +88,14 @@ deleteForm.addEventListener("submit", async (e) => {
         alert(error.message);
     }
 });
+
+/* Fetch Tour */
+if (fetchTourForm) {
+    fetchTourForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const tourid = fetchTourForm.querySelector("input").value;
+        if (tourid) {
+            window.location.href = `${API_URL}/${tourid}`;
+        }
+    });
+}

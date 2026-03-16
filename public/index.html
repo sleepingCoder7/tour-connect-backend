@@ -1,62 +1,143 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tour Connect</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <h1>Tour Connect Dashboard</h1>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tour Connect</title>
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <h1>Tour Connect Dashboard</h1>
 
-    <div class="container">
-        <div class="card">
-            <h2>Create Tour</h2>
-            <form id="create-tour-form">
-                <span>Tour ID:<input type="number" value="1" required></span>
-                <span>Title:<input type="text" value="Sydney Explorer Tour" required></span>
-                <span>Description:<input type="text" value="Explore the famous Anne Frank House and discover the beauty of Sydney." required></span>
-                <span>Pick Up:<input type="text" value="Sydney Opera House" required></span>
-                <span>Meeting Point:<input type="text" value="Circular Quay" required></span>
-                <span>Drop Off:<input type="text" value="Sydney Harbour Bridge" required></span>
-                <span>Duration:<input type="number" value="3" required></span>
-                <span>Duration Unit:<input type="text" value="days" required></span>
-                <button type="submit">Create Tour</button>
-            </form>
+        <div class="container">
+            <div class="card">
+                <h2>Create Tour</h2>
+                <form id="create-tour-form">
+                    <span
+                        >Tour ID:<input type="number" value="1" required
+                    /></span>
+                    <span
+                        >Title:<input
+                            type="text"
+                            value="Sydney Explorer Tour"
+                            required
+                    /></span>
+                    <span
+                        >Description:<input
+                            type="text"
+                            value="Explore the famous Anne Frank House and discover the beauty of Sydney."
+                            required
+                    /></span>
+                    <span
+                        >Pick Up:<input
+                            type="text"
+                            value="Sydney Opera House"
+                            required
+                    /></span>
+                    <span
+                        >Meeting Point:<input
+                            type="text"
+                            value="Circular Quay"
+                            required
+                    /></span>
+                    <span
+                        >Drop Off:<input
+                            type="text"
+                            value="Sydney Harbour Bridge"
+                            required
+                    /></span>
+                    <span
+                        >Duration:<input type="number" value="3" required
+                    /></span>
+                    <span
+                        >Duration Unit:<input type="text" value="days" required
+                    /></span>
+                    <button type="submit">Create Tour</button>
+                </form>
+            </div>
+            <div class="card">
+                <h2>Update Tour</h2>
+                <form id="update-tour-form">
+                    <span
+                        >Tour ID:<input
+                            type="number"
+                            placeholder="Tour ID"
+                            required
+                    /></span>
+                    <span>Title:<input type="text" placeholder="Title" /></span>
+                    <span
+                        >Description:<input
+                            type="text"
+                            placeholder="Description"
+                    /></span>
+                    <span
+                        >Pick Up:<input type="text" placeholder="Pick Up"
+                    /></span>
+                    <span
+                        >Meeting Point:<input
+                            type="text"
+                            placeholder="Meeting Point"
+                    /></span>
+                    <span
+                        >Drop Off:<input type="text" placeholder="Drop Off"
+                    /></span>
+                    <span
+                        >Duration:<input type="number" placeholder="Duration"
+                    /></span>
+                    <span
+                        >Duration Unit:<input
+                            type="text"
+                            placeholder="Duration Unit"
+                    /></span>
+                    <button type="submit">Update Tour</button>
+                </form>
+            </div>
         </div>
-        <div class="card">
-            <h2>Update Tour</h2>
-            <form id="update-tour-form">
-                <span>Tour ID:<input type="number" placeholder="Tour ID" required></span>
-                <span>Title:<input type="text" placeholder="Title"></span>  
-                <span>Description:<input type="text" placeholder="Description"></span>
-                <span>Pick Up:<input type="text" placeholder="Pick Up"></span>
-                <span>Meeting Point:<input type="text" placeholder="Meeting Point"></span>
-                <span>Drop Off:<input type="text" placeholder="Drop Off"></span>
-                <span>Duration:<input type="number" placeholder="Duration"></span>
-                <span>Duration Unit:<input type="text" placeholder="Duration Unit"></span>
-                <button type="submit">Update Tour</button>
-            </form>
+        
+        <div class="container2">
+            <div class="card">
+                <h2>All Tours</h2>
+                <button onclick="window.location.href = '/tour'">
+                    Fetch Tours
+                </button>
+                <ul id="tours-list"></ul>
+            </div>
+            <div class="card">
+                <h2>Fetch Tour</h2>
+                <form id="fetch-tour-form">
+                    <span
+                        >Tour ID:<input
+                            type="number"
+                            placeholder="Tour ID"
+                            required
+                    /></span>
+                    <button type="submit">Fetch Tour</button>
+                </form>
+            </div>
+            <div class="card">
+                <h2>Delete Tour</h2>
+                <form id="delete-tour-form">
+                    <span
+                        >Tour ID:<input
+                            type="number"
+                            placeholder="Tour ID"
+                            required
+                    /></span>
+                    <button type="submit">Delete Tour</button>
+                </form>
+            </div>
         </div>
-        <div class="card">
-            <h2>All Tours</h2>
-            <button onclick="window.location.href='/tour'">Fetch Tours</button>
-            <ul id="tours-list"></ul>
-        </div>
-        <div class="card">
-            <h2>Delete Tour</h2>
-            <form id="delete-tour-form">
-                <span>Tour ID:<input type="number" placeholder="Tour ID" required></span>
-                <button type="submit">Delete Tour</button>
-            </form>
-        </div>
-    </div>
 
-    <!--Swagger UI button-->
-    <div class="swagger-container">
-        <button class="swagger-btn" onclick="window.location.href='/api-docs'">Visit Swagger UI</button>
-    </div>
-    
-    <script src="script.js"></script>
-</body>
+        <!--Swagger UI button-->
+        <div class="swagger-container">
+            <button
+                class="swagger-btn"
+                onclick="window.location.href = '/api-docs'"
+            >
+                Visit Swagger UI
+            </button>
+        </div>
+
+        <script src="script.js"></script>
+    </body>
 </html>
