@@ -69,6 +69,7 @@ Create a `.env` file in the root directory and add:
 ```env
 PORT=3000
 MONGO_URI=your_mongodb_connection_string
+BASE_URL=http://localhost:3000
 ```
 
 **4. Run the application**
@@ -116,15 +117,15 @@ Start the server and immediately open your browser, navigating to:
 
 You'll see a dashboard interface featuring:
 - **All Tours** fetcher
-- **Create Tour** form wizard
-- **Update Tour** parameter inputs
-- **Delete Tour** input panel
+- **Fetch Tour** for a specific tour
+- **Create Tour** with all details
+- **Update Tour** information
+- **Delete Tour** for a specific tour
 
 ---
 
 ## 📊 Request Logging Overview
-All HTTP requests hitting the server endpoints are meticulously logged inside a local `/logs` directory using a streamlined setup with `morgan`.
-Log streams are automatically grouped and rotated daily using `rotating-file-stream`, ensuring massive logs don't consume all your disk space over extended uptimes!
+All HTTP requests hitting the server endpoints are logged using morgan library.
 
 ---
 
