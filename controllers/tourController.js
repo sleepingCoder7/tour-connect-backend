@@ -31,6 +31,10 @@ const getTourById = async (req, res) => {
 
 const createTour = async (req, res) => {
     try {
+        const existingTour = await Tour.findOne({tour_id: req.body.tour_id});
+        if (existingTour) {
+            return res.status(400).json({ message: "Tour with this ID already exists" });
+        }
         const tour = new Tour(req.body);
         await tour.save();
         res.status(201).json({ message: "Tour created successfully" });

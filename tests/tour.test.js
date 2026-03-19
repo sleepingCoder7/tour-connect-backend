@@ -52,6 +52,21 @@ describe("Tour API", () => {
         expect(Array.isArray(response.body.data.tour_options)).toBe(true);
     });
 
+    it("POST /tour should fail if tour_id already exists", async () => {
+        const response = await request(app).post("/tour").send({
+            tour_id: 1,
+            title: "Tour 1",
+            description: "Description 1",
+            pick_up: "Pick up 1",
+            meeting_point: "Meeting point 1",
+            drop_off: "Drop off 1",
+            duration: "1",
+            duration_unit: "hour",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.message).toBe("Tour with this ID already exists");
+    });
+
     it("DELETE /tour/:id should delete a tour", async () => {
         const response = await request(app).delete("/tour/1");
         expect(response.status).toBe(200);
