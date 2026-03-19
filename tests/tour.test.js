@@ -112,6 +112,36 @@ describe("Tour API", () => {
         expect(response.body.errors).toContain("\"title\" is required");
     });
 
+    it("POST should fail if title is less than 3 characters", async () => {
+        const response = await request(app).post("/tour").send({
+            tour_id: "1",
+            title: "To",
+            description: "Description 1",
+            pick_up: "Pick up 1",
+            meeting_point: "Meeting point 1",
+            drop_off: "Drop off 1",
+            duration: "1",
+            duration_unit: "hour",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"title\" length must be at least 3 characters long");
+    });
+
+    it("POST should fail if title is more than 100 characters", async () => {
+        const response = await request(app).post("/tour").send({
+            tour_id: "1",
+            title: "Tour 1".repeat(100),
+            description: "Description 1",
+            pick_up: "Pick up 1",
+            meeting_point: "Meeting point 1",
+            drop_off: "Drop off 1",
+            duration: "1",
+            duration_unit: "hour",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"title\" length must be less than or equal to 100 characters long");
+    });
+
     it("POST should fail if description is missing", async () => {
         const response = await request(app).post("/tour").send({
             tour_id: "1",
@@ -124,6 +154,36 @@ describe("Tour API", () => {
         });
         expect(response.status).toBe(400);
         expect(response.body.errors).toContain("\"description\" is required");
+    });
+
+    it("POST should fail if description is less than 5 characters", async () => {
+        const response = await request(app).post("/tour").send({
+            tour_id: "1",
+            title: "Tour 1",
+            description: "Desc",
+            pick_up: "Pick up 1",
+            meeting_point: "Meeting point 1",
+            drop_off: "Drop off 1",
+            duration: "1",
+            duration_unit: "hour",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"description\" length must be at least 5 characters long");
+    });
+
+    it("POST should fail if description is more than 1000 characters", async () => {
+        const response = await request(app).post("/tour").send({
+            tour_id: "1",
+            title: "Tour 1",
+            description: "Description 1".repeat(1000),
+            pick_up: "Pick up 1",
+            meeting_point: "Meeting point 1",
+            drop_off: "Drop off 1",
+            duration: "1",
+            duration_unit: "hour",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"description\" length must be less than or equal to 1000 characters long");
     });
 
     it("POST should fail if pick_up is missing", async () => {
@@ -205,6 +265,92 @@ describe("Tour API", () => {
             meeting_point: "Meeting point 1",
             drop_off: "Drop off 1",
             duration: "1",
+            duration_unit: "second",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"duration_unit\" must be one of [hour, hours, day, days]");
+    });
+
+    it("POST /tour should fail if duration is negative", async () => {
+        const response = await request(app).post("/tour").send({
+            tour_id: "1",
+            title: "Tour 1",
+            description: "Description 1",
+            pick_up: "Pick up 1",
+            meeting_point: "Meeting point 1",
+            drop_off: "Drop off 1",
+            duration: "-1",
+            duration_unit: "hour",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"duration\" must be a positive number");
+    });
+
+    it("POST /tour should fail if duration is zero", async () => {
+        const response = await request(app).post("/tour").send({
+            tour_id: "1",
+            title: "Tour 1",
+            description: "Description 1",
+            pick_up: "Pick up 1",
+            meeting_point: "Meeting point 1",
+            drop_off: "Drop off 1",
+            duration: "0",
+            duration_unit: "hour",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"duration\" must be a positive number");
+    });
+
+    it("PUT /tour/:id should fail if title is less than 3 characters", async () => {
+        const response = await request(app).put("/tour/1").send({
+            title: "To",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"title\" length must be at least 3 characters long");
+    });
+
+    it("PUT /tour/:id should fail if title is more than 100 characters", async () => {
+        const response = await request(app).put("/tour/1").send({
+            title: "Title 1".repeat(100),
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"title\" length must be less than or equal to 100 characters long");
+    });
+
+    it("PUT /tour/:id should fail if description is less than 5 characters", async () => {
+        const response = await request(app).put("/tour/1").send({
+            description: "Desc",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"description\" length must be at least 5 characters long");
+    });
+
+    it("PUT /tour/:id should fail if description is more than 1000 characters", async () => {
+        const response = await request(app).put("/tour/1").send({
+            description: "Description 1".repeat(1000),
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"description\" length must be less than or equal to 1000 characters long");
+    });
+
+    it("PUT /tour/:id should fail if duration is negative", async () => {
+        const response = await request(app).put("/tour/1").send({
+            duration: "-1",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"duration\" must be a positive number");
+    });
+
+    it("PUT /tour/:id should fail if duration is zero", async () => {
+        const response = await request(app).put("/tour/1").send({
+            duration: "0",
+        });
+        expect(response.status).toBe(400);
+        expect(response.body.errors).toContain("\"duration\" must be a positive number");
+    });
+
+    it("PUT /tour/:id should fail if duration_unit is not valid", async () => {
+        const response = await request(app).put("/tour/1").send({
             duration_unit: "second",
         });
         expect(response.status).toBe(400);
