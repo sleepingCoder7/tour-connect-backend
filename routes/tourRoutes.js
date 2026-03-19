@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const { getAllTours, createTour, updateTour, deleteTour, getTourById } = require("../controllers/tourController");
+const validate = require("../middlewares/validate");
+const { tourSchema, updateTourSchema } = require("../validators/tourValidator");
 
 /**
  * @swagger
@@ -107,7 +109,7 @@ router.get("/", getAllTours);
  *       500:
  *         description: Internal server error
  */
-router.post("/", createTour);
+router.post("/", validate(tourSchema), createTour);
 
 /**
  * @swagger
@@ -142,7 +144,7 @@ router.post("/", createTour);
  *       500:
  *         description: Internal server error
  */
-router.put("/:tour_id", updateTour);
+router.put("/:tour_id", validate(updateTourSchema), updateTour);
 
 /**
  * @swagger
