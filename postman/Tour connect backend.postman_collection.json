@@ -1,0 +1,147 @@
+{
+  "info": {
+    "_postman_id": "203a3414-ec4e-4944-af36-118965952d2c",
+    "name": "Tour connect backend",
+    "description": "This collection contains the core CRUD requests for the **Tours** resource in the Tour Connect backend API.\n\n### Base URL\n\nAll requests use the collection variable `{{BASE_URL}}` as the API host, e.g. `{{BASE_URL}}/tour`. Set `BASE_URL` to point to your running environment (local/dev/stage/prod).\n\n### Endpoints included (CRUD)\n\n- **Fetch all tours**: `GET {{BASE_URL}}/tour`\n    \n- **Get tour by ID**: `GET {{BASE_URL}}/tour/:id` (example request uses `102`)\n    \n- **Create a new tour**: `POST {{BASE_URL}}/tour`\n    \n- **Update tour details**: `PUT {{BASE_URL}}/tour/:id` (example request uses `102`)\n    \n- **Delete a tour**: `DELETE {{BASE_URL}}/tour/:id` (example request uses `102`)\n    \n\n### Notes\n\n- IDs like `102` are **sample values** used in request paths—replace them with a real tour ID from your environment.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "26328902"
+  },
+  "item": [
+    {
+      "name": "Fetch all tours",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/tour",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "tour"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Get tour by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/tour/102",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "tour",
+            "102"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Create a new tour",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"tour_id\": 102,\r\n    \"title\": \"Amazing Dubai Tour\",\r\n    \"description\": \"A wonderful tour around the city of Dubai.\",\r\n    \"pick_up\": \"Hotel Lobby\",\r\n    \"meeting_point\": \"Burj Khalifa\",\r\n    \"drop_off\": \"Hotel\",\r\n    \"duration\": 3,\r\n    \"duration_unit\": \"days\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/tour",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "tour"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Update tour details",
+      "request": {
+        "method": "PUT",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"duration\": 2.5,\r\n    \"duration_unit\": \"days\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{BASE_URL}}/tour/102",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "tour",
+            "102"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Delete a tour",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{BASE_URL}}/tour/102",
+          "host": [
+            "{{BASE_URL}}"
+          ],
+          "path": [
+            "tour",
+            "102"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "BASE_URL",
+      "value": ""
+    }
+  ]
+}
