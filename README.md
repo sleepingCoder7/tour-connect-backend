@@ -5,7 +5,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=black)
 
-Welcome to the **Tour Connect** backend! This is a robust Express.js & MongoDB-powered REST API designed for managing and organizing guided tours. It features full CRUD operations, detailed Swagger API documentation, rotational file logging, and comes with a beautiful vanilla front-end to interact directly with the API.
+Welcome to the **Tour Connect** backend! This is a robust Express.js & MongoDB-powered REST API designed for managing and organizing guided tours. It features full CRUD operations, detailed Swagger API documentation, and advanced logging capabilities. The backend is built with Node.js, Express.js, and MongoDB, and comes with a beautiful vanilla front-end to interact directly with the API.
 
 ---
 
@@ -23,7 +23,11 @@ Welcome to the **Tour Connect** backend! This is a robust Express.js & MongoDB-p
 - **Framework:** [Express.js](https://expressjs.com/)
 - **Database:** [MongoDB](https://www.mongodb.com/) & [Mongoose](https://mongoosejs.com/)
 - **API Documentation:** [Swagger UI Express](https://github.com/scottie1984/swagger-ui-express) & [swagger-jsdoc](https://github.com/Surnet/swagger-jsdoc)
-- **Logging:** [Morgan](https://github.com/expressjs/morgan) & [Rotating File Stream](https://github.com/iccicci/rotating-file-stream)
+- **Logging:** [Morgan](https://github.com/expressjs/morgan)
+- **Testing:** [Jest](https://jestjs.io/) & [Supertest](https://github.com/visionmedia/supertest)
+- **Environment Variables:** [dotenv](https://github.com/motdotla/dotenv)
+- **Frontend:** Vanilla HTML, CSS, and JavaScript
+- **Schema Validation:** [Joi](https://github.com/hapijs/joi)
 
 ---
 
@@ -32,11 +36,15 @@ Welcome to the **Tour Connect** backend! This is a robust Express.js & MongoDB-p
 📦 tour-connect-backend
  ┣ 📂 config            # Logging and configuration files (e.g., logger.js)
  ┣ 📂 controllers       # Core business logic methods for different routes
+ ┣ 📂 middlewares       # Express middleware functions
  ┣ 📂 models            # Mongoose schemas representing database collections
+ ┣ 📂 postman           # Postman collection for testing
  ┣ 📂 public            # Frontend assets (HTML, CSS, JS dashboard)
  ┣ 📂 routes            # Express router setups mapping URLs to controllers
  ┣ 📂 swagger           # Swagger configuration and implementation definitions
+ ┣ 📂 tests             # Unit tests
  ┣ 📂 utils             # Utilities, e.g., dummy tour generation script
+ ┣ 📂 validators        # Validation logic for request data
  ┣ 📜 app.js            # Express application setup, middlewares, and mounting
  ┣ 📜 index.js          # Entry point that connects to DB and starts the server
  ┗ 📜 package.json      # Dependencies and project scripts
@@ -46,7 +54,7 @@ Welcome to the **Tour Connect** backend! This is a robust Express.js & MongoDB-p
 
 ## ⚙️ Pre-requisites
 Make sure you have the following installed on your machine:
-- **Node.js**: v14.0.0 or higher
+- **Node.js**: v20.0.0 or higher
 - **MongoDB**: Locally installed or access to a MongoDB Atlas cluster URI
 
 ---
