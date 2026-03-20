@@ -73,7 +73,7 @@ const { tourSchema, updateTourSchema } = require("../validators/tourValidator");
  *           type: string
  *           description: Duration unit (e.g., day, days, hour, hours)
  *           default: days
- *      example:
+ *       example:
  *         title: "Amazing Paris Tour"
  *         description: "A wonderful tour around the city of light."
  *         pick_up: "Hotel Lobby"
