@@ -48,6 +48,39 @@ const { tourSchema, updateTourSchema } = require("../validators/tourValidator");
  *         drop_off: "Hotel"
  *         duration: 3
  *         duration_unit: "days"
+ *     UpdateTour:
+ *       type: object
+ *       properties:
+ *         title:
+ *           type: string
+ *           description: The title of the tour
+ *         description:
+ *           type: string
+ *           description: The description of the tour
+ *         pick_up:
+ *           type: string
+ *           description: Pick up location
+ *         meeting_point:
+ *           type: string
+ *           description: Meeting point for the tour
+ *         drop_off:
+ *           type: string
+ *           description: Drop off location
+ *         duration:
+ *           type: number
+ *           description: Duration of the tour
+ *         duration_unit:   
+ *           type: string
+ *           description: Duration unit (e.g., day, days, hour, hours)
+ *           default: days
+ *      example:
+ *         title: "Amazing Paris Tour"
+ *         description: "A wonderful tour around the city of light."
+ *         pick_up: "Hotel Lobby"
+ *         meeting_point: "Eiffel Tower"
+ *         drop_off: "Hotel"
+ *         duration: 3
+ *         duration_unit: "days"
  */
 
 /**
@@ -129,7 +162,7 @@ router.post("/", validate(tourSchema), createTour);
  *       content:
  *         application/json:
  *           schema:
- *             $ref: '#/components/schemas/Tour'
+ *             $ref: '#/components/schemas/UpdateTour'
  *     responses:
  *       200:
  *         description: Tour updated successfully
